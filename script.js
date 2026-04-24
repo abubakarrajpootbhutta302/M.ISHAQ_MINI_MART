@@ -1,26 +1,22 @@
-document.addEventListener("DOMContentLoaded", function () {
+let cart = [];
 
-  let cart = [];
+let buttons = document.querySelectorAll(".card button");
 
-  let buttons = document.querySelectorAll(".card button");
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
+    let product = btn.parentElement.querySelector("h3").innerText;
 
-      let product = btn.parentElement.querySelector("h3").innerText;
+    cart.push(product);
 
-      cart.push(product);
+    let list = document.getElementById("cartList");
+    list.innerHTML = "";
 
-      let list = document.getElementById("cartList");
-      list.innerHTML = "";
-
-      cart.forEach(item => {
-        let li = document.createElement("li");
-        li.innerText = item;
-        list.appendChild(li);
-      });
-
+    cart.forEach(item => {
+      let li = document.createElement("li");
+      li.innerText = item;
+      list.appendChild(li);
     });
-  });
 
+  });
 });
